@@ -5,7 +5,7 @@ Here in this repository we will be familiar with the concept of OpenCV functions
 
 
 
-## Brute-Force Matching with ORB Descriptors
+## 1- Brute-Force Matching with ORB Descriptors
 We are using ORB descriptors to match features. Here, we will see a simple example on how to match features between two images. In this case, I have a **queryImage and a **trainImage**. We will try to find the queryImage in trainImage using feature matching. 
 The first image is already taken, however, the second picture is a frame of live camera.
 
@@ -25,6 +25,17 @@ img1=cv.drawKeypoints(img1, kp1, None) # queryImage
 ```
 Next we create a BFMatcher object with distance measurement `cv.NORM_HAMMING` (since we are using __ORB__) and **crossCheck** is switched on for better results. Then we use `Matcher.match()` method to get the best matches in two images. 
 We sort them in **ascending order of their distances** so that best matches (with low distance) come to front. 
+
+<br>
+
+What is this Matcher Object?
+
+The result of matches = bf.match(des1,des2) line is a list of DMatch objects. This DMatch object has following attributes:
+
+    DMatch.distance - Distance between descriptors. The lower, the better it is.
+    DMatch.trainIdx - Index of the descriptor in train descriptors
+    DMatch.queryIdx - Index of the descriptor in query descriptors
+    DMatch.imgIdx - Index of the train image.
 
 <br>
 
@@ -60,5 +71,36 @@ Result with 20 best matchers
 ![002](https://github.com/dssdanial/OpenCV_Fundamentals_camera/assets/32397445/37a2a2dc-27be-4cc4-8618-4e21e4f31834)
 
 
+## 2- Brute-Force Matching with SIFT Descriptors and Ratio Test
 
-https://docs.opencv.org/4.x/dc/dc3/tutorial_py_matcher.html
+This time, we will use BFMatcher.knnMatch() to get k best matches. In this example, we will take k=2 so that we can apply ratio test explained by D.Lowe in his paper. 
+Each keypoint of the first image is matched with a number of keypoints from the second image. We keep the 2 best matches for each keypoint (best matches = the ones with the smallest distance measurement). Lowe's test checks that the two distances are sufficiently different. If they are not, then the keypoint is eliminated and will not be used for further calculations.
+```
+if distance1 < distance2 * a_constant then ....
+```
+
+Therefore,
+```
+    ret, live_camera = Webcam.read()
+    kp2, desc2 = sift.detectAndCompute(live_camera, None) # trainImage
+
+    # create BFMatcher object
+    bf = cv.BFMatcher()
+    # Match descriptors.
+    matches = bf.knnMatch(desc1,desc2,k=2)
+    # Apply ratio test
+    good = []
+    for m, n in matches:
+        if m.distance < 0.75 * n.distance:
+            good.append([m])
+    # cv.drawMatchesKnn expects list of lists as matches.
+    img3 = cv.drawMatchesKnn(img1, kp1, live_camera, kp2, good, None, flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
+
+    cv.imshow("Matching_SIFT",img3)
+
+```
+
+![BF_SIFT](https://github.com/dssdanial/OpenCV_Fundamentals_camera/assets/32397445/1911066d-6128-499d-a28a-a8818b93f71f)
+
+
+
