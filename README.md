@@ -53,10 +53,12 @@ That's why the Hamming distance is used.
 ```
 Result with 20 best matchers
 #### Standard view
-![001](https://github.com/dssdanial/OpenCV_Fundamentals_camera/assets/32397445/7369114d-5b43-45f0-b78f-2aabcec79bb0)
+![001](https://github.com/dssdanial/OpenCV_Fundamentals_camera/assets/32397445/3b846149-a373-4a01-82ae-2e86cf67f328)
+
 
 #### Rotated view
-![002](https://github.com/dssdanial/OpenCV_Fundamentals_camera/assets/32397445/60956ee2-94f0-48c9-9ce3-7a50ac7f9eda)
+![002](https://github.com/dssdanial/OpenCV_Fundamentals_camera/assets/32397445/37a2a2dc-27be-4cc4-8618-4e21e4f31834)
+
 
 
 https://docs.opencv.org/4.x/dc/dc3/tutorial_py_matcher.html
