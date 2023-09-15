@@ -12,7 +12,7 @@ int main (int argc, char **argv){
 
     }
     else{
-        cap.open(argv[1]); // attempt to open the video file specified as the firdt argument
+        cap.open(argv[1]); 
     }
 
 
