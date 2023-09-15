@@ -21,7 +21,7 @@ int i=0;
 
 int main() {
 
-    std::string directoryPath = "/home/iit.local/dsabzevari/my_workspace/epipolar_geometry/cpp/data/"; // Replace with your directory path
+    std::string directoryPath = "/home/iit.local/dsabzevari/my_workspace/epipolar_geometry/cpp/data/"; 
     std::vector<std::string> imageFiles;
 
     DIR *dir;
