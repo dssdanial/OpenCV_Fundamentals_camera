@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named multiple_img_time
+
+# Build rule for target.
+multiple_img_time: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 multiple_img_time
+.PHONY : multiple_img_time
+
+# fast build rule for target.
+multiple_img_time/fast:
+	$(MAKE) -f CMakeFiles/multiple_img_time.dir/build.make CMakeFiles/multiple_img_time.dir/build
+.PHONY : multiple_img_time/fast
+
+#=============================================================================
 # Target rules for targets named camera_cpp
 
 # Build rule for target.
@@ -190,6 +203,33 @@ fundamental_cpp.cpp.s:
 	$(MAKE) -f CMakeFiles/fundamental_cpp.dir/build.make CMakeFiles/fundamental_cpp.dir/fundamental_cpp.cpp.s
 .PHONY : fundamental_cpp.cpp.s
 
+multiple_img_time.o: multiple_img_time.cpp.o
+
+.PHONY : multiple_img_time.o
+
+# target to build an object file
+multiple_img_time.cpp.o:
+	$(MAKE) -f CMakeFiles/multiple_img_time.dir/build.make CMakeFiles/multiple_img_time.dir/multiple_img_time.cpp.o
+.PHONY : multiple_img_time.cpp.o
+
+multiple_img_time.i: multiple_img_time.cpp.i
+
+.PHONY : multiple_img_time.i
+
+# target to preprocess a source file
+multiple_img_time.cpp.i:
+	$(MAKE) -f CMakeFiles/multiple_img_time.dir/build.make CMakeFiles/multiple_img_time.dir/multiple_img_time.cpp.i
+.PHONY : multiple_img_time.cpp.i
+
+multiple_img_time.s: multiple_img_time.cpp.s
+
+.PHONY : multiple_img_time.s
+
+# target to generate assembly for a file
+multiple_img_time.cpp.s:
+	$(MAKE) -f CMakeFiles/multiple_img_time.dir/build.make CMakeFiles/multiple_img_time.dir/multiple_img_time.cpp.s
+.PHONY : multiple_img_time.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -197,6 +237,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... multiple_img_time"
 	@echo "... rebuild_cache"
 	@echo "... camera_cpp"
 	@echo "... fundamental_cpp"
@@ -206,6 +247,9 @@ help:
 	@echo "... fundamental_cpp.o"
 	@echo "... fundamental_cpp.i"
 	@echo "... fundamental_cpp.s"
+	@echo "... multiple_img_time.o"
+	@echo "... multiple_img_time.i"
+	@echo "... multiple_img_time.s"
 .PHONY : help
 
 

@@ -121,4 +121,6 @@ CMakeFiles/fundamental_cpp.dir/fundamental_cpp.cpp.o: /usr/local/include/opencv4
 CMakeFiles/fundamental_cpp.dir/fundamental_cpp.cpp.o: /usr/local/include/opencv4/opencv2/videostab/ring_buffer.hpp
 CMakeFiles/fundamental_cpp.dir/fundamental_cpp.cpp.o: /usr/local/include/opencv4/opencv2/videostab/stabilizer.hpp
 CMakeFiles/fundamental_cpp.dir/fundamental_cpp.cpp.o: /usr/local/include/opencv4/opencv2/videostab/wobble_suppression.hpp
+CMakeFiles/fundamental_cpp.dir/fundamental_cpp.cpp.o: /usr/local/include/opencv4/opencv2/xfeatures2d.hpp
+CMakeFiles/fundamental_cpp.dir/fundamental_cpp.cpp.o: /usr/local/include/opencv4/opencv2/xfeatures2d/nonfree.hpp
 

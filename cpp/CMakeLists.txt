@@ -9,3 +9,7 @@ target_link_libraries( fundamental_cpp ${OpenCV_LIBS} )
 add_executable( camera_cpp camera_cpp.cpp )
 target_link_libraries( camera_cpp ${OpenCV_LIBS} )
 
+add_executable( multiple_img_time multiple_img_time.cpp )
+target_link_libraries( multiple_img_time ${OpenCV_LIBS} )
+
+
