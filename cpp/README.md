@@ -12,7 +12,8 @@
 comparison between different algorithms and the execution time taken:
 
 ```
-SURF average time: 0.122867
-SIFT average time: 0.149799
-ORB average time: 0.0215862
+SURF average time: 0.188848
+SIFT average time: 0.216224
+ORB average time: 0.0257427
+BRISK average time: 0.151158
 ```
