@@ -15,15 +15,15 @@ using std::endl;
 
 std::vector<KeyPoint> keypoints1;
 int hessian_threshold=100;
-float mean_time1=0, mean_time2=0, mean_time3=0;
-float total_time1=0, total_time2=0, total_time3=0;
+float mean_time1=0, mean_time2=0, mean_time3=0, mean_time4=0;
+float total_time1=0, total_time2=0, total_time3=0, total_time4=0;
 int i=0;
 
 int main() {
 
     std::string directoryPath = "/home/iit.local/dsabzevari/my_workspace/epipolar_geometry/cpp/data/"; 
     std::vector<std::string> imageFiles;
-
+    
     DIR *dir;
     struct dirent *entry;
     if ((dir = opendir(directoryPath.c_str())) != NULL) {
@@ -31,6 +31,7 @@ int main() {
             std::string filename = entry->d_name;
             if (filename.length() > 4 && filename.substr(filename.length() - 4) == ".jpg") {
                 imageFiles.push_back(directoryPath + filename);
+
             }
         }
 
@@ -68,15 +69,26 @@ int main() {
         orb->detect(img, keypoints1);
         total_time3=float(clock()-begin_time3)/CLOCKS_PER_SEC;
 
+
+
+        float begin_time4=clock();
+        Ptr<BRISK> brisk=BRISK::create();
+        orb->detect(img, keypoints1);
+        total_time4=float(clock()-begin_time4)/CLOCKS_PER_SEC;
+
+
         mean_time1+=total_time1;
         mean_time2+=total_time2;
         mean_time3+=total_time3;
+        mean_time4+=total_time4;
         i++;
     }
 
     cout<<"SURF average time: "<< mean_time1/i<<endl;
     cout<<"SIFT average time: "<< mean_time2/i<<endl;
     cout<<"ORB average time: "<< mean_time3/i<<endl;
+    cout<<"BRISK average time: "<< mean_time4/i<<endl;
+
     return 0;
 
 }
